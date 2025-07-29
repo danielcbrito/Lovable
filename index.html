@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lovable - Plano Ilimitado por R$9,90</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-bg': '#0c0c0c',
+                        'primary': '#9f4ff0',
+                        'secondary': '#ff6b35',
+                        'accent-blue': '#4da6ff',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c0c0c;
+            color: #f5f5f5;
+            overflow-x: hidden;
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 10px rgba(159, 79, 240, 0.7);
+        }
+        
+        .glow-box {
+            box-shadow: 0 0 15px rgba(159, 79, 240, 0.5);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.9) 0%, rgba(40, 40, 40, 0.9) 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(159, 79, 240, 0.3);
+        }
+        
+        .btn-primary {
+            transition: all 0.3s ease;
+            background-color: #9f4ff0;
+        }
+        
+        .btn-primary:hover {
+            background-color: #8a3ed8;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(159, 79, 240, 0.6);
+        }
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="scroll-smooth">
+    <!-- Header/Navbar -->
+    <header class="sticky top-0 z-50 bg-black bg-opacity-90 backdrop-blur-sm border-b border-gray-800">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <span class="text-2xl font-bold text-white glow-text">LOVABLE</span>
+            </div>
+            <div>
+                <a href="#plano" class="btn-primary text-white font-semibold py-2 px-6 rounded-full inline-flex items-center">
+                    <span>Quero o Plano</span>
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary to-accent-blue mix-blend-overlay"></div>
+        </div>
+        <div class="container mx-auto relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                    <span class="glow-text">🚀 Libere o Poder da IA Ilimitada</span><br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">por Apenas R$9,90</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
+                    Plano único, pagamento exclusivo. Acesso ilimitado a todos os recursos do Lovable, sem limites e sem burocracia.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#plano" class="btn-primary text-white font-bold py-4 px-8 rounded-full text-lg inline-flex items-center justify-center transform hover:scale-105 transition duration-300">
+                        <span>Quero o Plano Ilimitado</span>
+                        <i class="fas fa-bolt ml-2"></i>
+                    </a>
+                </div>
+                <div class="mt-16 flex justify-center">
+                    <div class="animate-float">
+                        <div class="bg-gradient-to-br from-primary to-accent-blue p-1 rounded-full">
+                            <div class="bg-dark-bg rounded-full p-3">
+                                <i class="fas fa-infinity text-4xl text-primary"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto max-w-5xl">
+            <div class="gradient-bg rounded-2xl p-8 md:p-12 border border-gray-800">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-blue">Imagine o Poder da IA Sem Limites</span>
+                </h2>
+                <p class="text-xl text-gray-300 mb-8 text-center">
+                    Por apenas <span class="font-bold text-primary">R$9,90</span> (pagamento único, não mensal), você desbloqueia a liberdade total da IA, criando tudo que quiser, quando quiser.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+                    <div class="flex items-start">
+                        <div class="bg-primary bg-opacity-20 p-3 rounded-full mr-4">
+                            <i class="fas fa-check text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Pagamento Único</h3>
+                            <p class="text-gray-400">Nunca mais pague mensalidades. Acesso vitalício por um preço simbólico.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-primary bg-opacity-20 p-3 rounded-full mr-4">
+                            <i class="fas fa-infinity text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Uso Ilimitado</h3>
+                            <p class="text-gray-400">Crie quantos sistemas quiser, sem restrições de comandos ou recursos.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-primary bg-opacity-20 p-3 rounded-full mr-4">
+                            <i class="fas fa-rocket text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Todos os Modelos</h3>
+                            <p class="text-gray-400">Acesso completo à tecnologia mais avançada de IA disponível.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-primary bg-opacity-20 p-3 rounded-full mr-4">
+                            <i class="fas fa-gem text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Atualizações Inclusas</h3>
+                            <p class="text-gray-400">Todas as futuras melhorias e novos recursos sem custo adicional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Vantagens Exclusivas</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="gradient-bg rounded-xl p-8 border border-gray-800 card-hover">
+                    <div class="w-14 h-14 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-bolt text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Criação Ilimitada</h3>
+                    <p class="text-gray-400">Gere quantos sistemas quiser sem restrições de uso ou bloqueios.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="gradient-bg rounded-xl p-8 border border-gray-800 card-hover">
+                    <div class="w-14 h-14 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-brain text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Modelos Completos</h3>
+                    <p class="text-gray-400">Acesso total a todos os modelos Lovable, sem limitações.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="gradient-bg rounded-xl p-8 border border-gray-800 card-hover">
+                    <div class="w-14 h-14 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-terminal text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Sem Limites Diários</h3>
+                    <p class="text-gray-400">Execute quantos comandos precisar, todos os dias, sem bloqueios.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="gradient-bg rounded-xl p-8 border border-gray-800 card-hover">
+                    <div class="w-14 h-14 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-globe text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">IA para Todas as Páginas</h3>
+                    <p class="text-gray-400">Integre a IA em quantos projetos quiser, sem restrições.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="gradient-bg rounded-xl p-8 border border-gray-800 card-hover">
+                    <div class="w-14 h-14 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-sync-alt text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Atualizações Inclusas</h3>
+                    <p class="text-gray-400">Receba todas as melhorias futuras sem custo adicional.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="gradient-bg rounded-xl p-8 border border-gray-800 card-hover">
+                    <div class="w-14 h-14 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-handshake text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Sem Fidelidade</h3>
+                    <p class="text-gray-400">Nada de contratos ou obrigações. Você está no controle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="plano" class="py-20 px-4">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">💎 Acesso Ilimitado</span>
+            </h2>
+            <p class="text-xl text-gray-400 mb-12 text-center">Oferta Exclusiva Lovable</p>
+            
+            <div class="glow-box gradient-bg rounded-2xl p-8 border-2 border-primary border-opacity-50 transform hover:scale-[1.01] transition duration-300">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Lovable Ilimitado</h3>
+                        <p class="text-gray-400">Desbloqueie tudo. IA sem limites. Um novo nível de criação.</p>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <span class="text-4xl font-bold">R$9,90</span>
+                        <span class="text-gray-400">/ pagamento único</span>
+                    </div>
+                </div>
+                
+                <ul class="space-y-3 mb-10">
+                    <li class="flex items-center">
+                        <i class="fas fa-check-circle text-primary mr-3"></i>
+                        <span>Criação ilimitada de sistemas com IA</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check-circle text-primary mr-3"></i>
+                        <span>Acesso completo a todos os modelos Lovable</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check-circle text-primary mr-3"></i>
+                        <span>Sem limites de comandos diários</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check-circle text-primary mr-3"></i>
+                        <span>IA liberada para todas as páginas</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check-circle text-primary mr-3"></i>
+                        <span>Todas as futuras atualizações inclusas</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check-circle text-primary mr-3"></i>
+                        <span>Sem contrato ou fidelidade</span>
+                    </li>
+                </ul>
+                
+                <a href="https://pay.kirvano.com/5874a1ea-fb7c-4b66-a2b1-e6d092e52554" class="btn-primary text-white font-bold py-4 px-8 rounded-full text-lg w-full text-center inline-flex items-center justify-center transform hover:scale-105 transition duration-300">
+                    <span>Quero Acesso Ilimitado por R$9,90</span>
+                    <i class="fas fa-bolt ml-2"></i>
+                </a>
+                
+                <div class="mt-4 text-center text-sm text-gray-500">
+                    <p>Pagamento único • Sem renovação automática • Cancelamento a qualquer momento</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto max-w-5xl">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-blue">O que estão dizendo</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="gradient-bg rounded-xl p-6 border border-gray-800">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white font-bold mr-3">A</div>
+                        <div>
+                            <h4 class="font-semibold">Ana C.</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">"Criei meu negócio inteiro com IA usando só esse plano. Melhor investimento que já fiz!"</p>
+                </div>
+                
+                <div class="gradient-bg rounded-xl p-6 border border-gray-800">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-accent-blue flex items-center justify-center text-white font-bold mr-3">R</div>
+                        <div>
+                            <h4 class="font-semibold">Ricardo F.</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">"Por R$9,90 eu tenho um time de programadores no meu bolso. Absurdo de bom!"</p>
+                </div>
+                
+                <div class="gradient-bg rounded-xl p-6 border border-gray-800">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-secondary to-accent-blue flex items-center justify-center text-white font-bold mr-3">M</div>
+                        <div>
+                            <h4 class="font-semibold">Marcela S.</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic">"Se você não assinar agora, vai pagar caro depois. Essa oferta é única!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Dúvidas Frequentes</span>
+            </h2>
+            
+            <div class="space-y-4">
+                <div class="gradient-bg rounded-xl p-6 border border-gray-800">
+                    <button class="flex justify-between items-center w-full text-left">
+                        <h3 class="text-lg font-semibold">É realmente ilimitado?</h3>
+                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="mt-3 text-gray-400">
+                        <p>Sim! Use quantas vezes quiser, com IA totalmente liberada. Sem limites de uso, comandos ou recursos.</p>
+                    </div>
+                </div>
+                
+                <div class="gradient-bg rounded-xl p-6 border border-gray-800">
+                    <button class="flex justify-between items-center w-full text-left">
+                        <h3 class="text-lg font-semibold">Esse site é oficial?</h3>
+                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="mt-3 text-gray-400">
+                        <p>Sim! Esta é uma página oficial exclusiva, para poucos. Garantimos total segurança e suporte.</p>
+                    </div>
+                </div>
+                
+                <div class="gradient-bg rounded-xl p-6 border border-gray-800">
+                    <button class="flex justify-between items-center w-full text-left">
+                        <h3 class="text-lg font-semibold">O valor vai subir?</h3>
+                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="mt-3 text-gray-400">
+                        <p>Sim, essa condição promocional é temporária. Garanta seu acesso agora pelo preço especial de R$9,90.</p>
+                    </div>
+                </div>
+                
+                <div class="gradient-bg rounded-xl p-6 border border-gray-800">
+                    <button class="flex justify-between items-center w-full text-left">
+                        <h3 class="text-lg font-semibold">Posso cancelar quando quiser?</h3>
+                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="mt-3 text-gray-400">
+                        <p>Sim! Sem contrato, sem fidelidade. Você mantém o acesso vitalício mesmo após qualquer cancelamento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-4 bg-gradient-to-br from-gray-900 to-black">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Não perca essa chance única</span>
+            </h2>
+            <p class="text-xl text-gray-300 mb-10">
+                Esta é a oportunidade mais barata e poderosa para dominar a criação com IA. Você não encontrará uma chance assim de novo.
+            </p>
+            <p class="text-2xl font-bold mb-8">
+                <span class="text-primary">R$9,90.</span> 
+                <span class="text-white">Sem limites.</span> 
+                <span class="text-gray-400">Sem desculpas.</span>
+            </p>
+            <a href="https://pay.kirvano.com/5874a1ea-fb7c-4b66-a2b1-e6d092e52554" class="btn-primary text-white font-bold py-4 px-8 rounded-full text-lg inline-flex items-center justify-center mx-auto transform hover:scale-105 transition duration-300">
+                <span>Quero o Plano por R$9,90</span>
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 bg-black">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <span class="text-2xl font-bold text-white glow-text">LOVABLE</span>
+                    <p class="text-gray-500 mt-2">© 2025 Lovable. Todos os direitos reservados.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-primary transition">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition">
+                        <i class="fab fa-discord text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+                <p>Esta é uma página oficial de vendas da Lovable. Todos os pagamentos são processados com segurança.</p>
+                <p class="mt-2">Dúvidas? Entre em contato: suporte@lovable.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ toggle functionality
+        document.querySelectorAll('.gradient-bg button').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
