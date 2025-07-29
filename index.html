@@ -3,124 +3,813 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lovable - Plano Ilimitado por R$9,90</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Lovable - Acesso Ilimitado à IA</title>
+    <meta name="description" content="Acesso Total ao Lovable por só R$9,90 – Para Sempre">
+    <meta name="author" content="Lovable">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'dark-bg': '#0c0c0c',
-                        'primary': '#9f4ff0',
-                        'secondary': '#ff6b35',
-                        'accent-blue': '#4da6ff',
-                    },
-                    fontFamily: {
-                        'sans': ['Inter', 'sans-serif'],
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <meta property="og:title" content="Lovable - Acesso Ilimitado à IA">
+    <meta property="og:description" content="Acesso Total ao Lovable por só R$9,90 – Para Sempre">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@lovable_dev">
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        
+        /* Importação das fontes */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
+
+        /* Reset e configurações base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Gradient Colors */
+            --gradient-start: 20 100% 62%; /* Coral/Orange */
+            --gradient-middle: 320 65% 70%; /* Pink/Purple */
+            --gradient-end: 240 100% 45%; /* Deep Blue */
+            
+            /* Theme Colors */
+            --background: 222 15% 6%;
+            --foreground: 0 0% 98%;
+            --card: 222 15% 8%;
+            --card-foreground: 0 0% 98%;
+            --primary: 320 65% 70%;
+            --primary-foreground: 0 0% 100%;
+            --secondary: 240 100% 45%;
+            --secondary-foreground: 0 0% 100%;
+            --accent: 20 100% 62%;
+            --accent-foreground: 0 0% 100%;
+            --muted: 222 15% 15%;
+            --muted-foreground: 0 0% 65%;
+            --border: 222 15% 20%;
+            --input: 222 15% 15%;
+            --ring: 320 65% 70%;
+            --radius: 0.75rem;
+        }
+
         body {
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
             font-family: 'Inter', sans-serif;
-            background-color: #0c0c0c;
-            color: #f5f5f5;
+            scroll-behavior: smooth;
+            line-height: 1.6;
             overflow-x: hidden;
         }
-        
-        .glow-text {
-            text-shadow: 0 0 10px rgba(159, 79, 240, 0.7);
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.025em;
         }
-        
-        .glow-box {
-            box-shadow: 0 0 15px rgba(159, 79, 240, 0.5);
+
+        /* Utilidades */
+        .gradient-text {
+            background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)), hsl(var(--secondary)));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        
+
         .gradient-bg {
-            background: linear-gradient(135deg, rgba(20, 20, 20, 0.9) 0%, rgba(40, 40, 40, 0.9) 100%);
+            background: linear-gradient(135deg, 
+                hsl(var(--accent) / 0.15) 0%, 
+                hsl(var(--primary) / 0.15) 50%, 
+                hsl(var(--secondary) / 0.15) 100%);
         }
-        
-        .card-hover {
-            transition: all 0.3s ease;
+
+        .gradient-border {
+            position: relative;
+            background: hsl(var(--card));
+            border: 1px solid transparent;
         }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(159, 79, 240, 0.3);
+
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: 1px;
+            background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)), hsl(var(--secondary)));
+            border-radius: inherit;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: xor;
+            -webkit-mask-composite: xor;
         }
-        
-        .btn-primary {
-            transition: all 0.3s ease;
-            background-color: #9f4ff0;
+
+        .btn-gradient {
+            background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)));
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            border-radius: 1rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
         }
-        
-        .btn-primary:hover {
-            background-color: #8a3ed8;
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(159, 79, 240, 0.6);
+
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, hsl(var(--accent) / 0.9), hsl(var(--primary) / 0.9));
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px hsl(var(--primary) / 0.4), 0 10px 10px -5px hsl(var(--primary) / 0.2);
         }
-        
-        .scroll-smooth {
-            scroll-behavior: smooth;
+
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .glow-effect {
+            filter: drop-shadow(0 0 20px hsl(var(--primary) / 0.5));
+        }
+
+        .mesh-bg {
+            background-image: 
+                radial-gradient(circle at 20% 20%, hsl(var(--accent) / 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, hsl(var(--primary) / 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 70%, hsl(var(--secondary) / 0.3) 0%, transparent 50%);
+        }
+
+        .glass-effect {
+            backdrop-filter: blur(20px);
+            background: hsl(var(--background) / 0.8);
+            border: 1px solid hsl(var(--border) / 0.5);
+        }
+
+        .animate-fade-up {
+            animation: fadeUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
+
+        /* Layout Classes */
+        .section-padding {
+            padding: 4rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        .grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+        .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+        .gap-4 { gap: 1rem; }
+        .gap-6 { gap: 1.5rem; }
+        .gap-8 { gap: 2rem; }
+        .gap-12 { gap: 3rem; }
+
+        .flex {
+            display: flex;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .space-y-4 > * + * { margin-top: 1rem; }
+        .space-y-6 > * + * { margin-top: 1.5rem; }
+        .space-y-8 > * + * { margin-top: 2rem; }
+        .space-x-2 > * + * { margin-left: 0.5rem; }
+        .space-x-3 > * + * { margin-left: 0.75rem; }
+        .space-x-4 > * + * { margin-left: 1rem; }
+        .space-x-6 > * + * { margin-left: 1.5rem; }
+
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-3 { margin-bottom: 0.75rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-12 { margin-bottom: 3rem; }
+        .mb-16 { margin-bottom: 4rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-8 { margin-top: 2rem; }
+        .mt-12 { margin-top: 3rem; }
+        .mt-16 { margin-top: 4rem; }
+
+        .p-4 { padding: 1rem; }
+        .p-6 { padding: 1.5rem; }
+        .p-8 { padding: 2rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        .px-8 { padding-left: 2rem; padding-right: 2rem; }
+        .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+        .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+        .py-5 { padding-top: 1.25rem; padding-bottom: 1.25rem; }
+        .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+
+        .w-4 { width: 1rem; }
+        .w-5 { width: 1.25rem; }
+        .w-6 { width: 1.5rem; }
+        .w-8 { width: 2rem; }
+        .w-10 { width: 2.5rem; }
+        .w-12 { width: 3rem; }
+        .w-14 { width: 3.5rem; }
+        .w-16 { width: 4rem; }
+        .w-full { width: 100%; }
+
+        .h-4 { height: 1rem; }
+        .h-5 { height: 1.25rem; }
+        .h-6 { height: 1.5rem; }
+        .h-8 { height: 2rem; }
+        .h-10 { height: 2.5rem; }
+        .h-12 { height: 3rem; }
+        .h-14 { height: 3.5rem; }
+        .h-16 { height: 4rem; }
+
+        .rounded-full { border-radius: 9999px; }
+        .rounded-lg { border-radius: 0.5rem; }
+        .rounded-xl { border-radius: 0.75rem; }
+        .rounded-2xl { border-radius: 1rem; }
+        .rounded-3xl { border-radius: 1.5rem; }
+
+        .text-sm { font-size: 0.875rem; }
+        .text-base { font-size: 1rem; }
+        .text-lg { font-size: 1.125rem; }
+        .text-xl { font-size: 1.25rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-4xl { font-size: 2.25rem; }
+        .text-5xl { font-size: 3rem; }
+        .text-6xl { font-size: 3.75rem; }
+        .text-7xl { font-size: 4.5rem; }
+
+        .font-medium { font-weight: 500; }
+        .font-semibold { font-weight: 600; }
+        .font-bold { font-weight: 700; }
+
+        .leading-tight { line-height: 1.25; }
+        .leading-relaxed { line-height: 1.625; }
+
+        .opacity-0 { opacity: 0; }
+        .opacity-100 { opacity: 1; }
+
+        .transition-all { transition: all 0.3s; }
+        .transition-colors { transition: color 0.3s, background-color 0.3s; }
+        .transition-transform { transition: transform 0.3s; }
+
+        .hover\:scale-105:hover { transform: scale(1.05); }
+        .hover\:translate-x-1:hover { transform: translateX(0.25rem); }
+
+        .border { border: 1px solid hsl(var(--border)); }
+        .border-t { border-top: 1px solid hsl(var(--border)); }
+
+        .bg-black { background-color: #000; }
+        .bg-card { background-color: hsl(var(--card)); }
+
+        .text-white { color: #fff; }
+        .text-gray-300 { color: #d1d5db; }
+        .text-gray-400 { color: #9ca3af; }
+        .text-gray-800 { color: #1f2937; }
+
+        .max-w-2xl { max-width: 42rem; }
+        .max-w-3xl { max-width: 48rem; }
+        .max-w-4xl { max-width: 56rem; }
+        .max-w-5xl { max-width: 64rem; }
+        .max-w-6xl { max-width: 72rem; }
+
+        .mx-auto { margin-left: auto; margin-right: auto; }
+
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .fixed { position: fixed; }
+
+        .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+        .top-0 { top: 0; }
+        .bottom-0 { bottom: 0; }
+        .left-0 { left: 0; }
+        .right-0 { right: 0; }
+
+        .z-10 { z-index: 10; }
+        .z-50 { z-index: 50; }
+
+        .overflow-hidden { overflow: hidden; }
+        .overflow-x-hidden { overflow-x: hidden; }
+
+        .min-h-screen { min-height: 100vh; }
+
+        .shadow-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .shadow-2xl {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .backdrop-blur-md {
+            backdrop-filter: blur(12px);
+        }
+
+        .cursor-pointer {
+            cursor: pointer;
+        }
+
+        .select-none {
+            user-select: none;
+        }
+
+        .inline-flex {
+            display: inline-flex;
+        }
+
+        .block {
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .group:hover .group-hover\:scale-110 {
+            transform: scale(1.1);
+        }
+
+        .group:hover .group-hover\:translate-x-1 {
+            transform: translateX(0.25rem);
+        }
+
+        .fill-current {
+            fill: currentColor;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            transition: all 0.3s;
+        }
+
+        .navbar.scrolled {
+            backdrop-filter: blur(20px);
+            background: hsl(var(--background) / 0.8);
+            border-bottom: 1px solid hsl(var(--border) / 0.5);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.3s ease-out;
+        }
+
+        .mobile-menu.open {
+            max-height: 24rem;
+            opacity: 1;
+        }
+
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            backdrop-filter: blur(12px);
+            background: hsl(var(--background) / 0.95);
+            border-top: 1px solid hsl(var(--border));
+            padding: 0.75rem 1rem;
+            animation: slideUpFade 0.5s ease-out forwards;
+        }
+
+        @keyframes slideUpFade {
+            from {
+                opacity: 0;
+                transform: translateY(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* FAQ Styles */
+        .faq-item {
+            background: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .faq-button {
+            width: 100%;
+            text-align: left;
+            padding: 1rem 1.5rem;
+            background: transparent;
+            border: none;
+            color: hsl(var(--foreground));
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .faq-button:hover {
+            background: hsl(var(--muted));
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .faq-content.open {
+            max-height: 10rem;
+            opacity: 1;
+            padding: 0 1.5rem 1rem;
+        }
+
+        /* Stars */
+        .star {
+            width: 1rem;
+            height: 1rem;
+            color: #fbbf24;
+            fill: currentColor;
+        }
+
+        /* Avatar Images */
+        .avatar {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            border: 2px solid hsl(var(--accent));
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Icon Styles */
+        .icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            stroke-width: 2;
+            stroke: currentColor;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .icon-sm {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .icon-lg {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 3rem 0;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .grid-cols-2 {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .grid-cols-3 {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .grid-cols-4 {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .text-4xl { font-size: 2.25rem; }
+            .text-5xl { font-size: 2.5rem; }
+            .text-6xl { font-size: 3rem; }
+            .text-7xl { font-size: 3.5rem; }
+
+            .px-8 {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .py-20 {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+
+            .gap-8 {
+                gap: 1.5rem;
+            }
+
+            .gap-12 {
+                gap: 2rem;
+            }
+
+            .space-y-8 > * + * {
+                margin-top: 1.5rem;
+            }
+
+            .floating-cta {
+                display: block;
+            }
+
+            .desktop-only {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .floating-cta {
+                display: none;
+            }
+
+            .mobile-only {
+                display: none;
+            }
+
+            .grid-cols-md-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-cols-lg-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .grid-cols-lg-4 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Colors */
+        .text-accent { color: hsl(var(--accent)); }
+        .text-primary { color: hsl(var(--primary)); }
+        .text-secondary { color: hsl(var(--secondary)); }
+        .text-muted { color: hsl(var(--muted-foreground)); }
+        .text-foreground { color: hsl(var(--foreground)); }
+
+        .bg-accent-10 { background-color: hsl(var(--accent) / 0.1); }
+        .bg-primary-10 { background-color: hsl(var(--primary) / 0.1); }
+        .bg-secondary-10 { background-color: hsl(var(--secondary) / 0.1); }
+
+        .border-accent { border-color: hsl(var(--accent)); }
+        .border-primary { border-color: hsl(var(--primary)); }
+        .border-secondary { border-color: hsl(var(--secondary)); }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element-1 {
+            top: 5rem;
+            left: 2.5rem;
+            width: 8rem;
+            height: 8rem;
+            background-color: hsl(var(--accent) / 0.2);
+        }
+
+        .floating-element-2 {
+            bottom: 5rem;
+            right: 2.5rem;
+            width: 10rem;
+            height: 10rem;
+            background-color: hsl(var(--primary) / 0.2);
+            animation-delay: 2s;
+        }
+
+        .floating-element-3 {
+            top: 50%;
+            right: 25%;
+            width: 6rem;
+            height: 6rem;
+            background-color: hsl(var(--secondary) / 0.2);
+            animation-delay: 4s;
+        }
+
+        /* Animations */
+        .animate-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Additional responsive utilities */
+        @media (max-width: 480px) {
+            .text-3xl { font-size: 1.5rem; }
+            .text-4xl { font-size: 1.875rem; }
+            .text-5xl { font-size: 2.25rem; }
+            .text-6xl { font-size: 2.5rem; }
+            
+            .p-8 { padding: 1.5rem; }
+            .px-8 { padding-left: 0.75rem; padding-right: 0.75rem; }
+            
+            .gap-8 { gap: 1rem; }
+            .space-y-8 > * + * { margin-top: 1rem; }
         }
     </style>
 </head>
-<body class="scroll-smooth">
-    <!-- Header/Navbar -->
-    <header class="sticky top-0 z-50 bg-black bg-opacity-90 backdrop-blur-sm border-b border-gray-800">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center">
-                <span class="text-2xl font-bold text-white glow-text">LOVABLE</span>
-            </div>
-            <div>
-                <a href="#plano" class="btn-primary text-white font-semibold py-2 px-6 rounded-full inline-flex items-center">
-                    <span>Quero o Plano</span>
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div class="absolute inset-0 opacity-20">
-            <div class="absolute inset-0 bg-gradient-to-br from-primary to-accent-blue mix-blend-overlay"></div>
-        </div>
-        <div class="container mx-auto relative z-10">
-            <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                    <span class="glow-text">🚀 Libere o Poder da IA Ilimitada</span><br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">por Apenas R$9,90</span>
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
-                    Plano único, pagamento exclusivo. Acesso ilimitado a todos os recursos do Lovable, sem limites e sem burocracia.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="#plano" class="btn-primary text-white font-bold py-4 px-8 rounded-full text-lg inline-flex items-center justify-center transform hover:scale-105 transition duration-300">
-                        <span>Quero o Plano Ilimitado</span>
-                        <i class="fas fa-bolt ml-2"></i>
+<body>
+    <!-- Navbar -->
+    <nav id="navbar" class="navbar">
+        <div class="container">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold gradient-text">
+                        LOVABLE
                     </a>
                 </div>
-                <div class="mt-16 flex justify-center">
-                    <div class="animate-float">
-                        <div class="bg-gradient-to-br from-primary to-accent-blue p-1 rounded-full">
-                            <div class="bg-dark-bg rounded-full p-3">
-                                <i class="fas fa-infinity text-4xl text-primary"></i>
+                
+                <!-- Desktop Menu -->
+                <div class="desktop-only flex items-center space-x-6">
+                    <a href="#features" class="text-foreground transition-colors hover:text-primary font-medium">
+                        Vantagens
+                    </a>
+                    <a href="#plan" class="text-foreground transition-colors hover:text-primary font-medium">
+                        Plano
+                    </a>
+                    <a href="#testimonials" class="text-foreground transition-colors hover:text-primary font-medium">
+                        Depoimentos
+                    </a>
+                    <a href="#faq" class="text-foreground transition-colors hover:text-primary font-medium">
+                        FAQ
+                    </a>
+                    <a href="#plan" class="btn-gradient text-white px-6 py-3 rounded-full font-semibold text-sm">
+                        Acesso Ilimitado
+                    </a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="mobile-only flex items-center">
+                    <button id="mobile-menu-button" class="p-2 text-foreground">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu">
+                <div class="glass-effect rounded-2xl p-6 mb-4 space-y-4">
+                    <a href="#features" class="block text-foreground font-medium py-2">
+                        Vantagens
+                    </a>
+                    <a href="#plan" class="block text-foreground font-medium py-2">
+                        Plano
+                    </a>
+                    <a href="#testimonials" class="block text-foreground font-medium py-2">
+                        Depoimentos
+                    </a>
+                    <a href="#faq" class="block text-foreground font-medium py-2">
+                        FAQ
+                    </a>
+                    <a href="#plan" class="btn-gradient text-white px-6 py-3 rounded-full font-semibold text-center block mt-4">
+                        Acesso Ilimitado
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center overflow-hidden" style="padding-top: 5rem;">
+        <!-- Background -->
+        <div class="absolute inset-0 mesh-bg opacity-40"></div>
+        <div class="absolute inset-0 gradient-bg opacity-10"></div>
+        
+        <!-- Floating elements -->
+        <div class="floating-element floating-element-1"></div>
+        <div class="floating-element floating-element-2"></div>
+        <div class="floating-element floating-element-3"></div>
+
+        <div class="container relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 gap-12 items-center" style="grid-template-columns: 1fr;">
+                    <!-- Content -->
+                    <div class="text-center space-y-8">
+                        <!-- Badge -->
+                        <div class="inline-flex items-center px-4 py-2 bg-accent-10 border border-accent rounded-full text-accent text-sm font-medium animate-fade-up">
+                            <span class="mr-2">🔥</span>
+                            Nova versão disponível!
+                        </div>
+
+                        <!-- Main Headline -->
+                        <h1 class="text-4xl text-5xl text-6xl font-bold leading-tight animate-fade-up stagger-1">
+                            <span class="gradient-text block">Acesso Total</span>
+                            <span class="text-foreground block">ao Lovable por</span>
+                            <span class="gradient-text block">R$9,90</span>
+                            <span class="text-2xl text-3xl text-muted font-medium block mt-4">
+                                Para Sempre
+                            </span>
+                        </h1>
+
+                        <!-- Subtitle -->
+                        <p class="text-xl text-2xl text-muted max-w-3xl mx-auto animate-fade-up stagger-2">
+                            Plano único, pagamento exclusivo. Acesso ilimitado a todos os recursos do Lovable, sem limites e sem burocracia.
+                        </p>
+
+                        <!-- CTA Button -->
+                        <div class="animate-fade-up stagger-3">
+                            <a href="#plan" class="btn-gradient text-white px-8 py-4 px-10 py-5 rounded-2xl font-bold text-lg text-xl inline-flex items-center group shadow-2xl">
+                                <span>QUERO O PLANO ILIMITADO</span>
+                                <svg class="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+
+                        <!-- Trust Indicators -->
+                        <div class="flex flex-col items-center space-y-4 space-x-8 animate-fade-up stagger-4" style="flex-direction: column;">
+                            <div class="flex items-center space-x-3">
+                                <div class="flex" style="margin-left: -0.5rem;">
+                                    <img src="https://randomuser.me/api/portraits/women/1.jpg" class="w-10 h-10 rounded-full border-2 border-accent shadow-lg" alt="User" style="margin-left: -0.5rem;">
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full border-2 border-primary shadow-lg" alt="User" style="margin-left: -0.5rem;">
+                                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-10 h-10 rounded-full border-2 border-secondary shadow-lg" alt="User" style="margin-left: -0.5rem;">
+                                </div>
+                                <div>
+                                    <p class="text-sm font-semibold text-foreground">+5.000 usuários</p>
+                                    <p class="text-xs text-muted">já desbloquearam</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-2">
+                                <div class="flex items-center">
+                                    <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-semibold text-foreground">5.0</p>
+                                    <p class="text-xs text-muted">(2.5k avaliações)</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -130,51 +819,66 @@
     </section>
 
     <!-- About Section -->
-    <section class="py-20 px-4">
-        <div class="container mx-auto max-w-5xl">
-            <div class="gradient-bg rounded-2xl p-8 md:p-12 border border-gray-800">
-                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-blue">Imagine o Poder da IA Sem Limites</span>
-                </h2>
-                <p class="text-xl text-gray-300 mb-8 text-center">
-                    Por apenas <span class="font-bold text-primary">R$9,90</span> (pagamento único, não mensal), você desbloqueia a liberdade total da IA, criando tudo que quiser, quando quiser.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-                    <div class="flex items-start">
-                        <div class="bg-primary bg-opacity-20 p-3 rounded-full mr-4">
-                            <i class="fas fa-check text-primary"></i>
+    <section class="section-padding relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 gradient-bg opacity-30"></div>
+        
+        <div class="container relative z-10">
+            <div class="max-w-4xl mx-auto text-center space-y-12">
+                <!-- Main Content -->
+                <div class="space-y-6 animate-fade-up">
+                    <h2 class="text-4xl text-5xl text-6xl font-bold">
+                        <span class="gradient-text">Imagine poder usar</span>
+                        <br>
+                        <span class="text-foreground">o Lovable sem limites</span>
+                    </h2>
+                    <p class="text-xl text-2xl text-muted leading-relaxed max-w-3xl mx-auto">
+                        Todos os modelos, comandos e recursos liberados. Você desbloqueia a liberdade total da IA, criando tudo que quiser, quando quiser.
+                    </p>
+                </div>
+
+                <!-- Key Benefits -->
+                <div class="grid grid-cols-1 grid-cols-md-3 gap-8 animate-fade-up stagger-2">
+                    <div class="gradient-border rounded-2xl p-8 text-center group hover:scale-105 transition-all">
+                        <div class="w-16 h-16 rounded-2xl bg-accent-10 flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
                         </div>
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Pagamento Único</h3>
-                            <p class="text-gray-400">Nunca mais pague mensalidades. Acesso vitalício por um preço simbólico.</p>
-                        </div>
+                        <h3 class="text-xl font-bold text-foreground mb-3">Uso Ilimitado</h3>
+                        <p class="text-muted">Crie quantos projetos quiser, sem restrições de uso</p>
                     </div>
-                    <div class="flex items-start">
-                        <div class="bg-primary bg-opacity-20 p-3 rounded-full mr-4">
-                            <i class="fas fa-infinity text-primary"></i>
+
+                    <div class="gradient-border rounded-2xl p-8 text-center group hover:scale-105 transition-all">
+                        <div class="w-16 h-16 rounded-2xl bg-primary-10 flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
                         </div>
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Uso Ilimitado</h3>
-                            <p class="text-gray-400">Crie quantos sistemas quiser, sem restrições de comandos ou recursos.</p>
-                        </div>
+                        <h3 class="text-xl font-bold text-foreground mb-3">Pagamento Único</h3>
+                        <p class="text-muted">R$9,90 uma vez só, sem cobranças futuras</p>
                     </div>
-                    <div class="flex items-start">
-                        <div class="bg-primary bg-opacity-20 p-3 rounded-full mr-4">
-                            <i class="fas fa-rocket text-primary"></i>
+
+                    <div class="gradient-border rounded-2xl p-8 text-center group hover:scale-105 transition-all">
+                        <div class="w-16 h-16 rounded-2xl bg-secondary-10 flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
                         </div>
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Todos os Modelos</h3>
-                            <p class="text-gray-400">Acesso completo à tecnologia mais avançada de IA disponível.</p>
-                        </div>
+                        <h3 class="text-xl font-bold text-foreground mb-3">Garantia Total</h3>
+                        <p class="text-muted">7 dias de garantia, sem questionamentos</p>
                     </div>
-                    <div class="flex items-start">
-                        <div class="bg-primary bg-opacity-20 p-3 rounded-full mr-4">
-                            <i class="fas fa-gem text-primary"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Atualizações Inclusas</h3>
-                            <p class="text-gray-400">Todas as futuras melhorias e novos recursos sem custo adicional.</p>
-                        </div>
+                </div>
+
+                <!-- Highlight Box -->
+                <div class="gradient-border rounded-3xl p-8 p-12 animate-fade-up stagger-3">
+                    <div class="flex flex-col items-center justify-center space-y-4 space-x-6">
+                        <svg class="w-12 h-12 text-accent glow-effect" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        <p class="text-2xl text-3xl font-bold gradient-text text-center">
+                            Valor único, não mensal. Sem cobranças futuras.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -182,235 +886,561 @@
     </section>
 
     <!-- Features Section -->
-    <section class="py-20 px-4">
-        <div class="container mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Vantagens Exclusivas</span>
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
-                <div class="gradient-bg rounded-xl p-8 border border-gray-800 card-hover">
-                    <div class="w-14 h-14 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-bolt text-2xl text-primary"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Criação Ilimitada</h3>
-                    <p class="text-gray-400">Gere quantos sistemas quiser sem restrições de uso ou bloqueios.</p>
+    <section id="features" class="section-padding relative overflow-hidden">
+        <!-- Background -->
+        <div class="absolute inset-0 gradient-bg opacity-5"></div>
+        
+        <div class="container relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-16 mb-20 animate-fade-up">
+                    <h2 class="text-4xl text-5xl text-6xl font-bold mb-6">
+                        <span class="gradient-text">O que você vai</span>
+                        <br>
+                        <span class="text-foreground">desbloquear</span>
+                    </h2>
+                    <p class="text-xl text-2xl text-muted max-w-3xl mx-auto leading-relaxed">
+                        Tudo o que você precisa para dominar a criação com IA em um único plano.
+                    </p>
                 </div>
                 
-                <!-- Feature 2 -->
-                <div class="gradient-bg rounded-xl p-8 border border-gray-800 card-hover">
-                    <div class="w-14 h-14 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-brain text-2xl text-primary"></i>
+                <!-- Features Grid -->
+                <div class="grid grid-cols-1 grid-cols-md-2 grid-cols-lg-4 gap-6 gap-8">
+                    <div class="gradient-border rounded-2xl p-6 p-8 group hover:scale-105 transition-all animate-fade-up stagger-1">
+                        <div class="w-14 h-14 rounded-2xl bg-accent-10 flex items-center justify-center mb-6">
+                            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-foreground mb-3">
+                            Criação ilimitada
+                        </h3>
+                        <p class="text-muted leading-relaxed">
+                            Use a IA quantas vezes quiser, sem restrições ou limites diários.
+                        </p>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Modelos Completos</h3>
-                    <p class="text-gray-400">Acesso total a todos os modelos Lovable, sem limitações.</p>
+
+                    <div class="gradient-border rounded-2xl p-6 p-8 group hover:scale-105 transition-all animate-fade-up stagger-2">
+                        <div class="w-14 h-14 rounded-2xl bg-primary-10 flex items-center justify-center mb-6">
+                            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-foreground mb-3">
+                            Acesso completo
+                        </h3>
+                        <p class="text-muted leading-relaxed">
+                            Todos os modelos Lovable liberados, incluindo os mais avançados.
+                        </p>
+                    </div>
+
+                    <div class="gradient-border rounded-2xl p-6 p-8 group hover:scale-105 transition-all animate-fade-up stagger-3">
+                        <div class="w-14 h-14 rounded-2xl bg-secondary-10 flex items-center justify-center mb-6">
+                            <svg class="w-7 h-7 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-foreground mb-3">
+                            Sem limites
+                        </h3>
+                        <p class="text-muted leading-relaxed">
+                            Comandos ilimitados em todas as páginas e funcionalidades.
+                        </p>
+                    </div>
+
+                    <div class="gradient-border rounded-2xl p-6 p-8 group hover:scale-105 transition-all animate-fade-up stagger-4">
+                        <div class="w-14 h-14 rounded-2xl bg-accent-10 flex items-center justify-center mb-6">
+                            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-foreground mb-3">
+                            Atualizações inclusas
+                        </h3>
+                        <p class="text-muted leading-relaxed">
+                            Todas as futuras atualizações e melhorias sem custo adicional.
+                        </p>
+                    </div>
+
+                    <div class="gradient-border rounded-2xl p-6 p-8 group hover:scale-105 transition-all animate-fade-up stagger-5">
+                        <div class="w-14 h-14 rounded-2xl bg-primary-10 flex items-center justify-center mb-6">
+                            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 4v10m6-10v10m-9-8h12a2 2 0 012 2v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6a2 2 0 012-2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-foreground mb-3">
+                            Sem fidelidade
+                        </h3>
+                        <p class="text-muted leading-relaxed">
+                            Nada de contratos ou renovação automática. Cancele quando quiser.
+                        </p>
+                    </div>
+
+                    <div class="gradient-border rounded-2xl p-6 p-8 group hover:scale-105 transition-all animate-fade-up stagger-6">
+                        <div class="w-14 h-14 rounded-2xl bg-secondary-10 flex items-center justify-center mb-6">
+                            <svg class="w-7 h-7 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-foreground mb-3">
+                            Velocidade máxima
+                        </h3>
+                        <p class="text-muted leading-relaxed">
+                            Processamento prioritário para respostas mais rápidas.
+                        </p>
+                    </div>
+
+                    <div class="gradient-border rounded-2xl p-6 p-8 group hover:scale-105 transition-all animate-fade-up stagger-1">
+                        <div class="w-14 h-14 rounded-2xl bg-accent-10 flex items-center justify-center mb-6">
+                            <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-foreground mb-3">
+                            Segurança total
+                        </h3>
+                        <p class="text-muted leading-relaxed">
+                            Seus dados protegidos com criptografia de última geração.
+                        </p>
+                    </div>
+
+                    <div class="gradient-border rounded-2xl p-6 p-8 group hover:scale-105 transition-all animate-fade-up stagger-2">
+                        <div class="w-14 h-14 rounded-2xl bg-primary-10 flex items-center justify-center mb-6">
+                            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-foreground mb-3">
+                            Investimento mínimo
+                        </h3>
+                        <p class="text-muted leading-relaxed">
+                            Pagamento único, sem mensalidades.
+                        </p>
+                    </div>
                 </div>
-                
-                <!-- Feature 3 -->
-                <div class="gradient-bg rounded-xl p-8 border border-gray-800 card-hover">
-                    <div class="w-14 h-14 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-terminal text-2xl text-primary"></i>
+
+                <!-- Bottom CTA -->
+                <div class="text-center mt-16 mt-20 animate-fade-up stagger-6">
+                    <div class="gradient-border rounded-3xl p-8 p-12 max-w-4xl mx-auto">
+                        <h3 class="text-2xl text-3xl font-bold gradient-text mb-6">
+                            Pronto para transformar sua forma de criar?
+                        </h3>
+                        <p class="text-lg text-muted mb-8 max-w-2xl mx-auto">
+                            Junte-se a milhares de usuários que já descobriram o poder do Lovable ilimitado.
+                        </p>
+                        <a href="#plan" class="btn-gradient text-white px-8 py-4 rounded-2xl font-bold text-lg inline-flex items-center group">
+                            <span>Ver Plano Completo</span>
+                            <svg class="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </a>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Sem Limites Diários</h3>
-                    <p class="text-gray-400">Execute quantos comandos precisar, todos os dias, sem bloqueios.</p>
-                </div>
-                
-                <!-- Feature 4 -->
-                <div class="gradient-bg rounded-xl p-8 border border-gray-800 card-hover">
-                    <div class="w-14 h-14 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-globe text-2xl text-primary"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">IA para Todas as Páginas</h3>
-                    <p class="text-gray-400">Integre a IA em quantos projetos quiser, sem restrições.</p>
-                </div>
-                
-                <!-- Feature 5 -->
-                <div class="gradient-bg rounded-xl p-8 border border-gray-800 card-hover">
-                    <div class="w-14 h-14 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-sync-alt text-2xl text-primary"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Atualizações Inclusas</h3>
-                    <p class="text-gray-400">Receba todas as melhorias futuras sem custo adicional.</p>
-                </div>
-                
-                <!-- Feature 6 -->
-                <div class="gradient-bg rounded-xl p-8 border border-gray-800 card-hover">
-                    <div class="w-14 h-14 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-handshake text-2xl text-primary"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Sem Fidelidade</h3>
-                    <p class="text-gray-400">Nada de contratos ou obrigações. Você está no controle.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section id="plano" class="py-20 px-4">
-        <div class="container mx-auto max-w-4xl">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">💎 Acesso Ilimitado</span>
-            </h2>
-            <p class="text-xl text-gray-400 mb-12 text-center">Oferta Exclusiva Lovable</p>
-            
-            <div class="glow-box gradient-bg rounded-2xl p-8 border-2 border-primary border-opacity-50 transform hover:scale-[1.01] transition duration-300">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
-                    <div>
-                        <h3 class="text-2xl font-bold mb-2">Lovable Ilimitado</h3>
-                        <p class="text-gray-400">Desbloqueie tudo. IA sem limites. Um novo nível de criação.</p>
+    <!-- Plan Section -->
+    <section id="plan" class="section-padding relative overflow-hidden">
+        <!-- Background -->
+        <div class="absolute inset-0 mesh-bg opacity-20"></div>
+        <div class="absolute inset-0 gradient-bg opacity-10"></div>
+        
+        <div class="container relative z-10">
+            <div class="max-w-5xl mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-16 mb-20 animate-fade-up">
+                    <div class="inline-flex items-center px-4 py-2 bg-accent-10 border border-accent rounded-full text-accent text-sm font-medium mb-6">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l14 9-14 9V3z"></path>
+                        </svg>
+                        Oferta Exclusiva
                     </div>
-                    <div class="mt-4 md:mt-0">
-                        <span class="text-4xl font-bold">R$9,90</span>
-                        <span class="text-gray-400">/ pagamento único</span>
-                    </div>
+                    <h2 class="text-4xl text-5xl text-6xl font-bold mb-6">
+                        <span class="gradient-text">Lovable Ilimitado</span>
+                    </h2>
+                    <p class="text-xl text-2xl text-muted max-w-3xl mx-auto leading-relaxed">
+                        Um plano único para dominar a criação com IA sem limites.
+                    </p>
                 </div>
                 
-                <ul class="space-y-3 mb-10">
-                    <li class="flex items-center">
-                        <i class="fas fa-check-circle text-primary mr-3"></i>
-                        <span>Criação ilimitada de sistemas com IA</span>
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-check-circle text-primary mr-3"></i>
-                        <span>Acesso completo a todos os modelos Lovable</span>
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-check-circle text-primary mr-3"></i>
-                        <span>Sem limites de comandos diários</span>
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-check-circle text-primary mr-3"></i>
-                        <span>IA liberada para todas as páginas</span>
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-check-circle text-primary mr-3"></i>
-                        <span>Todas as futuras atualizações inclusas</span>
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-check-circle text-primary mr-3"></i>
-                        <span>Sem contrato ou fidelidade</span>
-                    </li>
-                </ul>
-                
-                <a href="https://pay.kirvano.com/5874a1ea-fb7c-4b66-a2b1-e6d092e52554" class="btn-primary text-white font-bold py-4 px-8 rounded-full text-lg w-full text-center inline-flex items-center justify-center transform hover:scale-105 transition duration-300">
-                    <span>Quero Acesso Ilimitado por R$9,90</span>
-                    <i class="fas fa-bolt ml-2"></i>
-                </a>
-                
-                <div class="mt-4 text-center text-sm text-gray-500">
-                    <p>Pagamento único • Sem renovação automática • Cancelamento a qualquer momento</p>
+                <!-- Main Plan Card -->
+                <div class="animate-fade-up stagger-2">
+                    <div class="relative">
+                        <!-- Glow effect -->
+                        <div class="absolute" style="top: -1rem; right: -1rem; bottom: -1rem; left: -1rem; background: linear-gradient(to right, hsl(var(--accent)), hsl(var(--primary)), hsl(var(--secondary))); border-radius: 1.5rem; filter: blur(2rem); opacity: 0.2;"></div>
+                        
+                        <!-- Main card -->
+                        <div class="gradient-border rounded-3xl p-8 p-12 p-16 relative" style="background: hsl(var(--card) / 0.8); backdrop-filter: blur(4px);">
+                            <div class="grid grid-cols-1 gap-12 gap-16 items-center" style="grid-template-columns: 1fr;">
+                                <!-- Left Column - Plan Details -->
+                                <div class="space-y-8">
+                                    <div>
+                                        <div class="flex items-center space-x-3 mb-4">
+                                            <div class="w-12 h-12 rounded-2xl bg-accent-10 flex items-center justify-center">
+                                                <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-2xl text-3xl font-bold text-foreground">
+                                                    Lovable Ilimitado
+                                                </h3>
+                                                <p class="text-muted">
+                                                    Desbloqueie tudo. IA sem limites.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Features List -->
+                                    <ul class="space-y-4">
+                                        <li class="flex items-start space-x-3">
+                                            <svg class="w-5 h-5 text-accent mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            <span class="text-foreground font-medium">Acesso ilimitado a todos os modelos</span>
+                                        </li>
+                                        <li class="flex items-start space-x-3">
+                                            <svg class="w-5 h-5 text-accent mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            <span class="text-foreground font-medium">Sem limites de comandos ou requisições</span>
+                                        </li>
+                                        <li class="flex items-start space-x-3">
+                                            <svg class="w-5 h-5 text-accent mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            <span class="text-foreground font-medium">Todas as futuras atualizações inclusas</span>
+                                        </li>
+                                        <li class="flex items-start space-x-3">
+                                            <svg class="w-5 h-5 text-accent mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            <span class="text-foreground font-medium">Suporte prioritário 24/7</span>
+                                        </li>
+                                        <li class="flex items-start space-x-3">
+                                            <svg class="w-5 h-5 text-accent mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            <span class="text-foreground font-medium">Sem contrato ou fidelidade</span>
+                                        </li>
+                                        <li class="flex items-start space-x-3">
+                                            <svg class="w-5 h-5 text-accent mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            <span class="text-foreground font-medium">Garantia de satisfação de 7 dias</span>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Security Badge -->
+                                    <div class="flex items-center space-x-2 text-sm text-muted">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                        </svg>
+                                        <span>Pagamento 100% seguro • Cancelamento a qualquer momento</span>
+                                    </div>
+
+                                    <!-- Pricing -->
+                                    <div class="text-center space-y-8">
+                                        <div class="space-y-4">
+                                            <p class="text-sm text-muted uppercase" style="letter-spacing: 0.1em;">
+                                                Pagamento único
+                                            </p>
+                                            <div class="space-y-2">
+                                                <p class="text-6xl text-7xl font-bold gradient-text glow-effect">
+                                                    R$9,90
+                                                </p>
+                                                <p class="text-lg text-muted">
+                                                    sem mensalidades
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <!-- CTA Button -->
+                                        <div class="space-y-4">
+                                            <a href="https://pay.kirvano.com/ca75d4f3-5cfb-4b5c-8132-a284f0174d13" class="btn-gradient text-white px-8 py-4 px-10 py-5 rounded-2xl font-bold text-lg text-xl w-full inline-flex items-center justify-center group shadow-2xl">
+                                                <svg class="w-6 h-6 mr-3 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                                </svg>
+                                                <span>Quero Acesso Ilimitado</span>
+                                            </a>
+                                            
+                                            <div class="flex items-center justify-center space-x-6 text-sm text-muted">
+                                                <div class="flex items-center space-x-1">
+                                                    <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                                    </svg>
+                                                    <span>Garantia 7 dias</span>
+                                                </div>
+                                                <div class="flex items-center space-x-1">
+                                                    <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                    </svg>
+                                                    <span>Acesso imediato</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Warning -->
+                <div class="text-center mt-8 animate-fade-up stagger-3">
+                    <p class="text-muted text-sm max-w-2xl mx-auto">
+                        ⚠️ Esta oferta é limitada e pode ser encerrada a qualquer momento sem aviso prévio.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="py-20 px-4">
-        <div class="container mx-auto max-w-5xl">
-            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-blue">O que estão dizendo</span>
-            </h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="gradient-bg rounded-xl p-6 border border-gray-800">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white font-bold mr-3">A</div>
-                        <div>
-                            <h4 class="font-semibold">Ana C.</h4>
-                            <div class="flex text-yellow-400 text-sm">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 italic">"Criei meu negócio inteiro com IA usando só esse plano. Melhor investimento que já fiz!"</p>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section-padding relative overflow-hidden">
+        <!-- Background -->
+        <div class="absolute inset-0 gradient-bg opacity-10"></div>
+        
+        <div class="container relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-16 mb-20 animate-fade-up">
+                    <h2 class="text-4xl text-5xl text-6xl font-bold mb-6">
+                        <span class="gradient-text">O que nossos</span>
+                        <br>
+                        <span class="text-foreground">usuários dizem</span>
+                    </h2>
+                    <p class="text-xl text-2xl text-muted max-w-3xl mx-auto leading-relaxed">
+                        Depoimentos reais de quem já desbloqueou o poder ilimitado da IA.
+                    </p>
                 </div>
                 
-                <div class="gradient-bg rounded-xl p-6 border border-gray-800">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-accent-blue flex items-center justify-center text-white font-bold mr-3">R</div>
-                        <div>
-                            <h4 class="font-semibold">Ricardo F.</h4>
-                            <div class="flex text-yellow-400 text-sm">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+                <!-- Testimonials Grid -->
+                <div class="grid grid-cols-1 grid-cols-md-2 grid-cols-lg-3 gap-8">
+                    <div class="gradient-border rounded-2xl p-8 group hover:scale-105 transition-all animate-fade-up stagger-1">
+                        <!-- Quote Icon -->
+                        <div class="mb-6">
+                            <svg class="w-8 h-8 text-accent opacity-60" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3.691 6.292C5.094 4.771 7.217 4 10 4h1v2.819l-.804.161c-1.37.274-2.323.813-2.833 1.604A2.902 2.902 0 006 9.5c0 .307.025.6.074.881C7.917 10.738 9.632 12.246 11.5 14.5c.589.632 1.218.632 1.807 0C15.132 12.246 16.847 10.738 18.69 10.381c.049-.281.074-.574.074-.881a2.902 2.902 0 00-1.363-.916c-.51-.791-1.463-1.33-2.833-1.604L14 6.181V4h1c2.783 0 4.906.771 6.309 2.292C22.706 7.813 23.5 9.84 23.5 12.5S22.706 17.187 21.309 18.708C19.906 20.229 17.783 21 15 21h-1v-2.819l.804-.161c1.37-.274 2.323-.813 2.833-1.604A2.902 2.902 0 0019 15.5c0-.307-.025-.6-.074-.881C17.083 14.262 15.368 12.754 13.5 10.5c-.589-.632-1.218-.632-1.807 0C9.868 12.754 8.153 14.262 6.31 14.619A2.902 2.902 0 006 15.5c0 .642.137 1.234.363 1.773.51.791 1.463 1.33 2.833 1.604L10 19.181V22H9c-2.783 0-4.906-.771-6.309-2.292C1.294 18.187.5 16.16.5 13.5S1.294 8.813 2.691 7.292z"></path>
+                            </svg>
+                        </div>
+                        
+                        <!-- Rating -->
+                        <div class="flex items-center mb-6">
+                            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        </div>
+                        
+                        <!-- Testimonial Text -->
+                        <blockquote class="text-foreground text-lg leading-relaxed mb-8 font-medium">
+                            "Criei meu negócio inteiro com IA usando só esse plano. Por R$9,90 eu tenho um time de programadores no meu bolso."
+                        </blockquote>
+                        
+                        <!-- Author -->
+                        <div class="flex items-center space-x-4">
+                            <div class="relative">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-12 h-12 rounded-full border-2 border-accent shadow-lg" alt="Ana Carolina">
+                                <div class="absolute" style="bottom: -0.25rem; right: -0.25rem; width: 1rem; height: 1rem; background-color: hsl(var(--accent)); border-radius: 50%; border: 2px solid hsl(var(--background));"></div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-foreground">Ana Carolina</h4>
+                                <p class="text-sm text-muted">Empreendedora Digital</p>
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-300 italic">"Por R$9,90 eu tenho um time de programadores no meu bolso. Absurdo de bom!"</p>
+
+                    <div class="gradient-border rounded-2xl p-8 group hover:scale-105 transition-all animate-fade-up stagger-2">
+                        <!-- Quote Icon -->
+                        <div class="mb-6">
+                            <svg class="w-8 h-8 text-primary opacity-60" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3.691 6.292C5.094 4.771 7.217 4 10 4h1v2.819l-.804.161c-1.37.274-2.323.813-2.833 1.604A2.902 2.902 0 006 9.5c0 .307.025.6.074.881C7.917 10.738 9.632 12.246 11.5 14.5c.589.632 1.218.632 1.807 0C15.132 12.246 16.847 10.738 18.69 10.381c.049-.281.074-.574.074-.881a2.902 2.902 0 00-1.363-.916c-.51-.791-1.463-1.33-2.833-1.604L14 6.181V4h1c2.783 0 4.906.771 6.309 2.292C22.706 7.813 23.5 9.84 23.5 12.5S22.706 17.187 21.309 18.708C19.906 20.229 17.783 21 15 21h-1v-2.819l.804-.161c1.37-.274 2.323-.813 2.833-1.604A2.902 2.902 0 0019 15.5c0-.307-.025-.6-.074-.881C17.083 14.262 15.368 12.754 13.5 10.5c-.589-.632-1.218-.632-1.807 0C9.868 12.754 8.153 14.262 6.31 14.619A2.902 2.902 0 006 15.5c0 .642.137 1.234.363 1.773.51.791 1.463 1.33 2.833 1.604L10 19.181V22H9c-2.783 0-4.906-.771-6.309-2.292C1.294 18.187.5 16.16.5 13.5S1.294 8.813 2.691 7.292z"></path>
+                            </svg>
+                        </div>
+                        
+                        <!-- Rating -->
+                        <div class="flex items-center mb-6">
+                            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        </div>
+                        
+                        <!-- Testimonial Text -->
+                        <blockquote class="text-foreground text-lg leading-relaxed mb-8 font-medium">
+                            "Se você não comprar agora, vai pagar caro depois. Não existe custo-benefício melhor. É surreal o que você consegue por R$9,90."
+                        </blockquote>
+                        
+                        <!-- Author -->
+                        <div class="flex items-center space-x-4">
+                            <div class="relative">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-12 h-12 rounded-full border-2 border-primary shadow-lg" alt="Ricardo Almeida">
+                                <div class="absolute" style="bottom: -0.25rem; right: -0.25rem; width: 1rem; height: 1rem; background-color: hsl(var(--primary)); border-radius: 50%; border: 2px solid hsl(var(--background));"></div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-foreground">Ricardo Almeida</h4>
+                                <p class="text-sm text-muted">Desenvolvedor</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gradient-border rounded-2xl p-8 group hover:scale-105 transition-all animate-fade-up stagger-3">
+                        <!-- Quote Icon -->
+                        <div class="mb-6">
+                            <svg class="w-8 h-8 text-secondary opacity-60" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3.691 6.292C5.094 4.771 7.217 4 10 4h1v2.819l-.804.161c-1.37.274-2.323.813-2.833 1.604A2.902 2.902 0 006 9.5c0 .307.025.6.074.881C7.917 10.738 9.632 12.246 11.5 14.5c.589.632 1.218.632 1.807 0C15.132 12.246 16.847 10.738 18.69 10.381c.049-.281.074-.574.074-.881a2.902 2.902 0 00-1.363-.916c-.51-.791-1.463-1.33-2.833-1.604L14 6.181V4h1c2.783 0 4.906.771 6.309 2.292C22.706 7.813 23.5 9.84 23.5 12.5S22.706 17.187 21.309 18.708C19.906 20.229 17.783 21 15 21h-1v-2.819l.804-.161c1.37-.274 2.323-.813 2.833-1.604A2.902 2.902 0 0019 15.5c0-.307-.025-.6-.074-.881C17.083 14.262 15.368 12.754 13.5 10.5c-.589-.632-1.218-.632-1.807 0C9.868 12.754 8.153 14.262 6.31 14.619A2.902 2.902 0 006 15.5c0 .642.137 1.234.363 1.773.51.791 1.463 1.33 2.833 1.604L10 19.181V22H9c-2.783 0-4.906-.771-6.309-2.292C1.294 18.187.5 16.16.5 13.5S1.294 8.813 2.691 7.292z"></path>
+                            </svg>
+                        </div>
+                        
+                        <!-- Rating -->
+                        <div class="flex items-center mb-6">
+                            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        </div>
+                        
+                        <!-- Testimonial Text -->
+                        <blockquote class="text-foreground text-lg leading-relaxed mb-8 font-medium">
+                            "Depois que comprei, minha produtividade aumentou 10x. Consigo criar sistemas complexos em horas que antes levavam semanas."
+                        </blockquote>
+                        
+                        <!-- Author -->
+                        <div class="flex items-center space-x-4">
+                            <div class="relative">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-12 h-12 rounded-full border-2 border-secondary shadow-lg" alt="Juliana Santos">
+                                <div class="absolute" style="bottom: -0.25rem; right: -0.25rem; width: 1rem; height: 1rem; background-color: hsl(var(--secondary)); border-radius: 50%; border: 2px solid hsl(var(--background));"></div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-foreground">Juliana Santos</h4>
+                                <p class="text-sm text-muted">Product Manager</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="gradient-bg rounded-xl p-6 border border-gray-800">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-secondary to-accent-blue flex items-center justify-center text-white font-bold mr-3">M</div>
-                        <div>
-                            <h4 class="font-semibold">Marcela S.</h4>
-                            <div class="flex text-yellow-400 text-sm">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+
+                <!-- Stats -->
+                <div class="mt-16 mt-20 animate-fade-up stagger-4">
+                    <div class="gradient-border rounded-3xl p-8 p-12">
+                        <div class="grid grid-cols-1 grid-cols-md-3 gap-8 text-center">
+                            <div>
+                                <p class="text-3xl text-4xl font-bold gradient-text mb-2">5.000+</p>
+                                <p class="text-muted">Usuários Satisfeitos</p>
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-center mb-2">
+                                    <span class="text-3xl text-4xl font-bold text-foreground mr-2">5.0</span>
+                                    <div class="flex">
+                                        <svg class="w-6 h-6 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                        <svg class="w-6 h-6 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                        <svg class="w-6 h-6 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                        <svg class="w-6 h-6 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                        <svg class="w-6 h-6 star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    </div>
+                                </div>
+                                <p class="text-muted">Avaliação Média</p>
+                            </div>
+                            <div>
+                                <p class="text-3xl text-4xl font-bold gradient-text mb-2">2.5k+</p>
+                                <p class="text-muted">Avaliações</p>
                             </div>
                         </div>
                     </div>
-                    <p class="text-gray-300 italic">"Se você não assinar agora, vai pagar caro depois. Essa oferta é única!"</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="py-20 px-4">
-        <div class="container mx-auto max-w-4xl">
-            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Dúvidas Frequentes</span>
-            </h2>
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20" style="background: linear-gradient(to bottom, hsl(222 15% 15%), #000);">
+        <div class="container">
+            <div class="text-center mb-16 animate-in">
+                <h2 class="text-3xl text-4xl font-bold mb-4">
+                    <span class="gradient-text">
+                        Perguntas Frequentes
+                    </span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                    Tudo o que você precisa saber sobre o plano ilimitado.
+                </p>
+            </div>
             
-            <div class="space-y-4">
-                <div class="gradient-bg rounded-xl p-6 border border-gray-800">
-                    <button class="flex justify-between items-center w-full text-left">
-                        <h3 class="text-lg font-semibold">É realmente ilimitado?</h3>
-                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+            <div class="max-w-3xl mx-auto">
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-medium">É realmente ilimitado?</span>
+                        <svg class="w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
                     </button>
-                    <div class="mt-3 text-gray-400">
-                        <p>Sim! Use quantas vezes quiser, com IA totalmente liberada. Sem limites de uso, comandos ou recursos.</p>
+                    <div class="faq-content">
+                        <p class="text-gray-300">Sim! Você pode usar a IA quantas vezes quiser, sem restrições. Todos os modelos e comandos estão totalmente liberados para uso ilimitado.</p>
                     </div>
                 </div>
-                
-                <div class="gradient-bg rounded-xl p-6 border border-gray-800">
-                    <button class="flex justify-between items-center w-full text-left">
-                        <h3 class="text-lg font-semibold">Esse site é oficial?</h3>
-                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-medium">Esse site é oficial?</span>
+                        <svg class="w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
                     </button>
-                    <div class="mt-3 text-gray-400">
-                        <p>Sim! Esta é uma página oficial exclusiva, para poucos. Garantimos total segurança e suporte.</p>
+                    <div class="faq-content">
+                        <p class="text-gray-300">Sim! Esta é uma página oficial e exclusiva da Lovable, com um plano promocional especial por tempo limitado.</p>
                     </div>
                 </div>
-                
-                <div class="gradient-bg rounded-xl p-6 border border-gray-800">
-                    <button class="flex justify-between items-center w-full text-left">
-                        <h3 class="text-lg font-semibold">O valor vai subir?</h3>
-                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-medium">O valor vai subir?</span>
+                        <svg class="w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
                     </button>
-                    <div class="mt-3 text-gray-400">
-                        <p>Sim, essa condição promocional é temporária. Garanta seu acesso agora pelo preço especial de R$9,90.</p>
+                    <div class="faq-content">
+                        <p class="text-gray-300">Sim. Esta condição especial de R$9,90 é limitada e pode acabar a qualquer momento. Depois que a oferta encerrar, o preço será reajustado.</p>
                     </div>
                 </div>
-                
-                <div class="gradient-bg rounded-xl p-6 border border-gray-800">
-                    <button class="flex justify-between items-center w-full text-left">
-                        <h3 class="text-lg font-semibold">Posso cancelar quando quiser?</h3>
-                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-medium">Posso cancelar quando quiser?</span>
+                        <svg class="w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
                     </button>
-                    <div class="mt-3 text-gray-400">
-                        <p>Sim! Sem contrato, sem fidelidade. Você mantém o acesso vitalício mesmo após qualquer cancelamento.</p>
+                    <div class="faq-content">
+                        <p class="text-gray-300">Sim. Não há contrato, fidelidade ou renovação automática. Você mantém o acesso vitalício pelo pagamento único de R$9,90.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-medium">Como faço para acessar?</span>
+                        <svg class="w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-gray-300">Após o pagamento, você receberá um e-mail com as instruções para ativar seu acesso ilimitado em todos os dispositivos.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">
+                        <span class="text-lg font-medium">Há garantia de satisfação?</span>
+                        <svg class="w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-gray-300">Sim! Oferecemos 7 dias de garantia. Se não ficar satisfeito, devolvemos seu dinheiro sem questionamentos.</p>
                     </div>
                 </div>
             </div>
@@ -418,85 +1448,196 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 px-4 bg-gradient-to-br from-gray-900 to-black">
-        <div class="container mx-auto max-w-4xl text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Não perca essa chance única</span>
-            </h2>
-            <p class="text-xl text-gray-300 mb-10">
-                Esta é a oportunidade mais barata e poderosa para dominar a criação com IA. Você não encontrará uma chance assim de novo.
-            </p>
-            <p class="text-2xl font-bold mb-8">
-                <span class="text-primary">R$9,90.</span> 
-                <span class="text-white">Sem limites.</span> 
-                <span class="text-gray-400">Sem desculpas.</span>
-            </p>
-            <a href="https://pay.kirvano.com/5874a1ea-fb7c-4b66-a2b1-e6d092e52554" class="btn-primary text-white font-bold py-4 px-8 rounded-full text-lg inline-flex items-center justify-center mx-auto transform hover:scale-105 transition duration-300">
-                <span>Quero o Plano por R$9,90</span>
-                <i class="fas fa-arrow-right ml-2"></i>
-            </a>
+    <section id="cta" class="py-20 bg-black">
+        <div class="container">
+            <div class="max-w-4xl mx-auto text-center animate-in">
+                <h2 class="text-3xl text-5xl font-bold mb-8">
+                    <span class="gradient-text">
+                        Não perca esta oportunidade única
+                    </span>
+                </h2>
+                <p class="text-xl text-2xl text-gray-300 mb-12">
+                    Esta é a oferta mais barata e poderosa para dominar a criação com IA. Você não encontrará uma chance assim de novo.
+                </p>
+                
+                <div class="inline-block" style="background: linear-gradient(to right, hsl(var(--primary) / 0.2), hsl(var(--secondary) / 0.2)); border-radius: 1rem; padding: 0.25rem;">
+                    <div class="bg-background rounded-xl p-8">
+                        <p class="text-3xl font-bold text-primary mb-6">
+                            Pagamento único • Sem mensalidades
+                        </p>
+                        <a href="#plan" class="btn-gradient px-12 py-5 rounded-full font-bold text-xl inline-flex items-center">
+                            <svg class="mr-3 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                            <span>Ver Plano Ilimitado</span>
+                        </a>
+                        <p class="text-sm text-gray-400 mt-4 flex items-center justify-center">
+                            <svg class="mr-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                            </svg>
+                            Pagamento 100% seguro • Cancelamento a qualquer momento
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mt-12 border-t border-gray-800 pt-12">
+                    <div class="flex flex-col space-y-4 space-x-12 justify-center items-center">
+                        <div class="flex items-center">
+                            <svg class="text-primary mr-3 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                            <span>Garantia de 7 dias</span>
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="text-secondary mr-3 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                            <span>Acesso vitalício</span>
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="text-accent mr-3 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>Atualizações gratuitas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 px-4 bg-black">
-        <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <span class="text-2xl font-bold text-white glow-text">LOVABLE</span>
-                    <p class="text-gray-500 mt-2">© 2025 Lovable. Todos os direitos reservados.</p>
+    <footer class="bg-black py-8 border-t border-gray-800">
+        <div class="container">
+            <div class="flex flex-col items-center justify-between space-y-6">
+                <div class="text-center">
+                    <a href="#" class="text-2xl font-bold glow">
+                        <span class="text-white">LOVABLE</span>
+                    </a>
+                    <p class="text-gray-400 mt-2">© 2023 Lovable. Todos os direitos reservados.</p>
                 </div>
+                
                 <div class="flex space-x-6">
                     <a href="#" class="text-gray-400 hover:text-primary transition">
-                        <i class="fab fa-instagram text-xl"></i>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                        </svg>
                     </a>
                     <a href="#" class="text-gray-400 hover:text-primary transition">
-                        <i class="fab fa-twitter text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-primary transition">
-                        <i class="fab fa-discord text-xl"></i>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.042-3.441.219-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.888-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.357-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                        </svg>
                     </a>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
-                <p>Esta é uma página oficial de vendas da Lovable. Todos os pagamentos são processados com segurança.</p>
-                <p class="mt-2">Dúvidas? Entre em contato: suporte@lovable.com</p>
+            
+            <div class="mt-12 pt-12 border-t border-gray-800 text-center">
+                <p class="text-gray-400">
+                    Esta é uma página oficial de vendas da Lovable. Oferta válida por tempo limitado.
+                </p>
             </div>
         </div>
     </footer>
 
+    <!-- Floating CTA (Mobile Only) -->
+    <div class="floating-cta mobile-only">
+        <div class="container px-4 py-3">
+            <a href="#plan" class="btn-gradient text-white px-6 py-3 rounded-2xl font-bold text-base w-full inline-flex items-center justify-center group shadow-lg">
+                <svg class="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                <span>Ver Plano Ilimitado</span>
+            </a>
+        </div>
+    </div>
+
     <script>
-        // Simple FAQ toggle functionality
-        document.querySelectorAll('.gradient-bg button').forEach(button => {
-            button.addEventListener('click', () => {
-                const content = button.nextElementSibling;
-                const icon = button.querySelector('i');
-                
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                    icon.style.transform = 'rotate(0deg)';
-                } else {
-                    content.style.maxHeight = content.scrollHeight + 'px';
-                    icon.style.transform = 'rotate(180deg)';
-                }
-            });
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('open');
         });
-        
-        // Smooth scroll for anchor links
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // FAQ toggle function
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('svg');
+            const isOpen = content.classList.contains('open');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-content').forEach(faq => {
+                faq.classList.remove('open');
+            });
+            
+            document.querySelectorAll('.faq-button svg').forEach(svg => {
+                svg.style.transform = 'rotate(0deg)';
+            });
+            
+            if (!isOpen) {
+                content.classList.add('open');
+                icon.style.transform = 'rotate(45deg)';
+            }
+        }
+
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                     });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    mobileMenu.classList.remove('open');
                 }
             });
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.animate-fade-up, .animate-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Stagger animations
+            setTimeout(() => {
+                document.querySelectorAll('.animate-fade-up').forEach((el, index) => {
+                    setTimeout(() => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+            }, 500);
         });
     </script>
 </body>
